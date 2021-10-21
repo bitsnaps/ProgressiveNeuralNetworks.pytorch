@@ -1,0 +1,15 @@
+ports:
+- port: 8097
+  onOpen: open-browser
+
+tasks:
+  - init: |
+      pip install --upgrade pip
+      pip install torch==0.4.1
+      pip install visdom
+      pip install Pillow==2.2.2
+      pip install tqdm
+      pip install torchvision==0.2.0
+    command: |
+      start-visdom-server
+  - command: gp await-port 8097 && sleep 2 && gp preview "$(gp url 8097)"
