@@ -5,12 +5,10 @@ ports:
 tasks:
   - init: |
       pip install --upgrade pip
-      pip install numpy
-      pip install torch==0.4.1
-      pip install visdom
-      pip install Pillow==2.2.2
-      pip install tqdm
-      pip install torchvision==0.2.0
+      make build
+      make run
     command: |
-      start-visdom-server
+      docker exec -it pytorch bash
   - command: gp await-port 8097 && sleep 2 && gp preview "$(gp url 8097)"
+# Now in docker bash you can run:
+# python main.py
