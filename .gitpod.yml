@@ -5,6 +5,7 @@ ports:
 tasks:
   - init: |
       pip install --upgrade pip
+      pip install numpy
       pip install torch==0.4.1
       pip install visdom
       pip install Pillow==2.2.2
